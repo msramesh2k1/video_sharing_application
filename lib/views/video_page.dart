@@ -1,3 +1,4 @@
+import 'package:google_fonts/google_fonts.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
 
@@ -41,20 +42,170 @@ class _VideoPageState extends State<VideoPage> {
                 )
               : Container(
                   color: Colors.black,
-                )
+                ),
+          Positioned(
+            bottom: 20,
+            child: Container(
+              width: MediaQuery.of(context).size.width,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  Icon(
+                    Icons.home_filled,
+                    color: Colors.white,
+                  ),
+                  Icon(
+                    Icons.search,
+                    color: Colors.white,
+                  ),
+                  CircleAvatar(
+                    backgroundColor: Colors.white,
+                    radius: 30,
+                    child: Icon(
+                      Icons.add,
+                      color: Colors.black,
+                      size: 30,
+                    ),
+                  ),
+                  Icon(
+                    Icons.inbox,
+                    color: Colors.white,
+                  ),
+                  Icon(
+                    Icons.account_circle_outlined,
+                    color: Colors.white,
+                  )
+                ],
+              ),
+            ),
+          ),
+          Positioned(
+              top: 50,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text("Following   /   ",
+                        style: GoogleFonts.aBeeZee(
+                          color: Colors.white,
+                          fontSize: 15,
+                        )),
+                    Text("For You",
+                        style: GoogleFonts.aBeeZee(
+                          color: Colors.white,
+                          fontSize: 15,
+                        )),
+                  ],
+                ),
+              )),
+          Positioned(
+              bottom: 100,
+              left: 20,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const Icon(
+                      Icons.music_note,
+                      color: Colors.white,
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Text("Go Banaza | Akon",
+                        style: GoogleFonts.aBeeZee(
+                          color: Colors.white70,
+                          fontSize: 17,
+                        )),
+                  ],
+                ),
+              )),
+          Positioned(
+              bottom: 150,
+              left: 20,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      width: 200,
+                      child: Text(
+                          "Party your mind in stuff times and make go banaza",
+                          style: GoogleFonts.aBeeZee(
+                            color: Colors.white,
+                            fontSize: 17,
+                          )),
+                    ),
+                  ],
+                ),
+              )),
+          Positioned(
+              bottom: 200,
+              left: 20,
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    const SizedBox(
+                      width: 10,
+                    ),
+                    Container(
+                      width: 200,
+                      child: Text("@induleka",
+                          style: GoogleFonts.aBeeZee(
+                            color: Colors.white,
+                            fontSize: 17,
+                          )),
+                    ),
+                  ],
+                ),
+              )),
+          Positioned(
+            right: 20,
+            bottom: 6,
+            child: Container(
+              height: MediaQuery.of(context).size.height / 2,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  CircleAvatar(
+                    radius: 23,
+                    backgroundColor: Colors.white,
+                  ),
+                  Icon(
+                    Icons.thumb_up,
+                    color: Colors.white,
+                    size: 30,
+                  ),
+                  Icon(
+                    Icons.message,
+                    size: 30,
+                    color: Colors.white,
+                  ),
+                  Icon(
+                    Icons.share,
+                    size: 30,
+                    color: Colors.white,
+                  ),
+                  CircleAvatar(
+                    backgroundColor: Colors.grey,
+                    radius: 23,
+                  ),
+                  SizedBox(
+                    height: 30,
+                  ),
+                ],
+              ),
+            ),
+          )
         ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _controller!.value.isPlaying
-                ? _controller!.pause()
-                : _controller!.play();
-          });
-        },
-        child: Icon(
-          _controller!.value.isPlaying ? Icons.pause : Icons.play_arrow,
-        ),
       ),
     );
   }
