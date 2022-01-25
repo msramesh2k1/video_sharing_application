@@ -17,6 +17,7 @@ class _VideoPageState extends State<VideoPage> {
     super.initState();
     _controller = VideoPlayerController.network(widget.url)
       ..initialize().then((_) {
+        _controller!.play();
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
         setState(() {});
       });
@@ -27,16 +28,20 @@ class _VideoPageState extends State<VideoPage> {
     return Scaffold(
       body: Stack(
         children: <Widget>[
-          SizedBox.expand(
-            child: FittedBox(
-              fit: BoxFit.cover,
-              child: SizedBox(
-                width: _controller!.value.size.width,
-                height: _controller!.value.size.height,
-                child: VideoPlayer(_controller!),
-              ),
-            ),
-          ),
+          _controller!.value.isInitialized
+              ? SizedBox.expand(
+                  child: FittedBox(
+                    fit: BoxFit.cover,
+                    child: SizedBox(
+                      width: _controller!.value.size.width,
+                      height: _controller!.value.size.height,
+                      child: VideoPlayer(_controller!),
+                    ),
+                  ),
+                )
+              : Container(
+                  color: Colors.black,
+                )
         ],
       ),
       floatingActionButton: FloatingActionButton(

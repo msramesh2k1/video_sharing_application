@@ -35,18 +35,20 @@ class _HomeScreenState extends State<HomeScreen> {
               stream:
                   FirebaseFirestore.instance.collection("videos").snapshots(),
               builder: (context, snapshots) {
-                return PageView.builder(
-                    itemCount: snapshots.data!.docs.length,
-                    scrollDirection: Axis.vertical,
-                    itemBuilder: (context, index) {
-                      if (snapshots.data!.size == 0) {
-                        return const CircularProgressIndicator();
-                      } else {
+                if (snapshots.data == null) {
+                  return Container(
+                    color: Colors.black,
+                  );
+                } else {
+                  return PageView.builder(
+                      itemCount: snapshots.data!.docs.length,
+                      scrollDirection: Axis.vertical,
+                      itemBuilder: (context, index) {
                         return VideoPage(
                           url: snapshots.data!.docs[index]['url'],
                         );
-                      }
-                    });
+                      });
+                }
               })),
     );
   }
