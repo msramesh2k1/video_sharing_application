@@ -1,6 +1,8 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:action/views/video_thumbnail.dart' as tn;
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:video_player/video_player.dart';
@@ -25,6 +27,7 @@ class _VideoPageState extends State<VideoPage> {
     _controller = VideoPlayerController.network(widget.url)
       ..initialize().then((_) {
         _controller!.play();
+        _controller!.setLooping(true);
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
         setState(() {});
       });
@@ -48,7 +51,7 @@ class _VideoPageState extends State<VideoPage> {
                 )
               : Container(color: Colors.black),
           Positioned(
-            bottom: 20,
+            bottom: 10,
             child: Container(
               width: MediaQuery.of(context).size.width,
               child: Row(
@@ -79,7 +82,7 @@ class _VideoPageState extends State<VideoPage> {
                     color: Colors.white,
                   ),
                   const Icon(
-                    Icons.account_circle_outlined,
+                    EvaIcons.personOutline,
                     color: Colors.white,
                   )
                 ],
