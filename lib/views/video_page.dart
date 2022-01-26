@@ -1,6 +1,11 @@
+import 'dart:io';
+
+import 'package:action/views/video_thumbnail.dart' as tn;
 import 'package:google_fonts/google_fonts.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:video_player/video_player.dart';
 import 'package:flutter/material.dart';
+import 'package:video_thumbnail/video_thumbnail.dart';
 
 class VideoPage extends StatefulWidget {
   final String url;
@@ -16,6 +21,7 @@ class _VideoPageState extends State<VideoPage> {
   @override
   void initState() {
     super.initState();
+
     _controller = VideoPlayerController.network(widget.url)
       ..initialize().then((_) {
         _controller!.play();
@@ -40,38 +46,39 @@ class _VideoPageState extends State<VideoPage> {
                     ),
                   ),
                 )
-              : Container(
-                  color: Colors.black,
-                ),
+              : Container(color: Colors.black),
           Positioned(
             bottom: 20,
             child: Container(
               width: MediaQuery.of(context).size.width,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  Icon(
+                children: [
+                  const Icon(
                     Icons.home_filled,
                     color: Colors.white,
                   ),
-                  Icon(
+                  const Icon(
                     Icons.search,
                     color: Colors.white,
                   ),
-                  CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 30,
-                    child: Icon(
-                      Icons.add,
-                      color: Colors.black,
-                      size: 30,
+                  InkWell(
+                    onTap: () async {},
+                    child: const CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: 30,
+                      child: Icon(
+                        Icons.add,
+                        color: Colors.black,
+                        size: 30,
+                      ),
                     ),
                   ),
-                  Icon(
+                  const Icon(
                     Icons.inbox,
                     color: Colors.white,
                   ),
-                  Icon(
+                  const Icon(
                     Icons.account_circle_outlined,
                     color: Colors.white,
                   )
