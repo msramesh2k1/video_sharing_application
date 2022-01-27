@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:action/views/search_page.dart';
 import 'package:action/views/video_thumbnail.dart' as tn;
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -58,12 +59,18 @@ class _VideoPageState extends State<VideoPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   const Icon(
-                    Icons.home_filled,
+                    EvaIcons.homeOutline,
                     color: Colors.white,
                   ),
-                  const Icon(
-                    Icons.search,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (_) => const SearchPage()));
+                    },
+                    child: const Icon(
+                      EvaIcons.search,
+                      color: Colors.white,
+                    ),
                   ),
                   InkWell(
                     onTap: () async {},
@@ -77,8 +84,8 @@ class _VideoPageState extends State<VideoPage> {
                       ),
                     ),
                   ),
-                  const Icon(
-                    Icons.inbox,
+                    const Icon(
+                    EvaIcons.messageSquareOutline,
                     color: Colors.white,
                   ),
                   const Icon(
