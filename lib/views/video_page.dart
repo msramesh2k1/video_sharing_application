@@ -1,6 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 
+import 'package:action/views/account_screen.dart';
 import 'package:action/views/search_page.dart';
 import 'package:action/views/video_thumbnail.dart' as tn;
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
@@ -64,8 +65,10 @@ class _VideoPageState extends State<VideoPage> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => const SearchPage()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const SearchPage()));
                     },
                     child: const Icon(
                       EvaIcons.search,
@@ -84,13 +87,21 @@ class _VideoPageState extends State<VideoPage> {
                       ),
                     ),
                   ),
-                    const Icon(
+                  const Icon(
                     EvaIcons.messageSquareOutline,
                     color: Colors.white,
                   ),
-                  const Icon(
-                    EvaIcons.personOutline,
-                    color: Colors.white,
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (_) => const AccountPage()));
+                    },
+                    child: const Icon(
+                      EvaIcons.personOutline,
+                      color: Colors.white,
+                    ),
                   )
                 ],
               ),
